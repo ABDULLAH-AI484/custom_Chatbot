@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+  <!-- Greeting -->
+  <category>
+    <pattern>HELLO</pattern>
+    <template>
+      HI! Welcome to our health club.
+      <think>
+        <set name="last_sentence_type">Statement</set>
+        <set name="sentiment">Neutral</set>
+        <set name="perspective">Second Person</set>
+      </think>
+    </template>
+  </category>
+
+  <!-- User wants to improve health -->
+  <category>
+    <pattern>I WANT TO * MY *</pattern>
+    <template>
+      Do you have any specific goal, like weight loss, stress management, or building muscles?
+      <think>
+        <set name="goal"><star index="1"/> <star index="2"/></set>
+        <set name="last_sentence_type">Statement</set>
+        <set name="sentiment">Positive</set>
+        <set name="perspective">First Person</set>
+      </think>
+    </template>
+  </category>
+
+  <!-- User wants to lose weight -->
+  <category>
+    <pattern>I WANT TO * MY WEIGHT</pattern>
+    <template>
+      Okay, I'll keep that in mind! Let's talk about some healthy habits.
+      <think>
+        <set name="goal">lose weight</set>
+        <set name="last_sentence_type">Statement</set>
+        <set name="sentiment">Positive</set>
+        <set name="perspective">First Person</set>
+      </think>
+    </template>
+  </category>
+
+  <!-- User wants to manage stress -->
+  <category>
+    <pattern>I WANT TO * MY STRESS</pattern>
+    <template>
+      Managing stress is essential! I'll remember that goal for you.
+      <think>
+        <set name="goal">stress management</set>
+        <set name="last_sentence_type">Statement</set>
+        <set name="sentiment">Positive</set>
+        <set name="perspective">First Person</set>
+      </think>
+    </template>
+  </category>
+
+  <!-- Respond to YES with context -->
+  <category>
+    <pattern>YES</pattern>
+    <template>
+      Great! Let's work on a plan. Do you prefer <random><li>diet tips</li><li>exercise tips</li></random>?
+      <think>
+        <set name="last_sentence_type">Statement</set>
+        <set name="sentiment">Positive</set>
+        <set name="perspective">Second Person</set>
+      </think>
+    </template>
+  </category>
+
+  <!-- Respond to NO with context -->
+  <category>
+    <pattern>NO</pattern>
+    <template>
+      No worries! We can still discuss general wellness tips.
+      <think>
+        <set name="last_sentence_type">Statement</set>
+        <set name="sentiment">Neutral</set>
+        <set name="perspective">Second Person</set>
+      </think>
+    </template>
+  </category>
+
+  <!-- General diet tips -->
+  <category>
+    <pattern>GIVE ME A * TIP</pattern>
+    <template>
+      <random>
+        <li>Try to incorporate more whole grains and veggies into your meals.</li>
+        <li>Stay hydrated! Aim to drink 8 cups of water a day.</li>
+        <li>Eat smaller, more frequent meals to keep your energy steady.</li>
+      </random>
+      <think>
+        <set name="last_sentence_type">Request</set>
+        <set name="sentiment">Neutral</set>
+        <set name="perspective">Second Person</set>
+      </think>
+    </template>
+  </category>
+
+  <!-- General exercise tips -->
+  <category>
+    <pattern>EXERCISE TIPS</pattern>
+    <template>
+      <random>
+        <li>Start with a mix of cardio and strength training.</li>
+        <li>Try walking or jogging for 20 minutes daily.</li>
+        <li>Incorporate strength exercises like squats and lunges.</li>
+      </random>
+      <think>
+        <set name="last_sentence_type">Request</set>
+        <set name="sentiment">Neutral</set>
+        <set name="perspective">Second Person</set>
+      </think>
+    </template>
+  </category>
+
+  <!-- Definition-based query -->
+  <category>
+    <pattern>WHAT IS *</pattern>
+    <template>
+      Let me look it up for you. The definition of <star/> is:
+      <think>
+        <set name="word"><star/></set>
+        <set name="last_query"><star/></set>
+        <set name="last_sentence_type">Request</set>
+        <set name="sentiment">Neutral</set>
+        <set name="perspective">Second Person</set>
+      </think>
+    </template>
+  </category>
+
+  <category>
+    <pattern>DEFINE *</pattern>
+    <template>
+      Let me look it up for you. The definition of <star/> is:
+      <think>
+        <set name="word"><star/></set>
+        <set name="last_query"><star/></set>
+        <set name="last_sentence_type">Request</set>
+        <set name="sentiment">Neutral</set>
+        <set name="perspective">Second Person</set>
+      </think>
+    </template>
+  </category>
+
+
+    <category>
+        <pattern>HOW IS MY MOOD</pattern>
+        <template>
+            Your mood is <get name="last_sentiment"/>.
+        </template>
+    </category>
+
+    <category>
+        <pattern>*</pattern>
+        <template>
+            Mood: <get name="last_sentiment"/>
+        </template>
+    </category>
+
+
+  <!-- Recalling user’s last goal -->
+  <category>
+    <pattern>MY GOAL</pattern>
+    <template>
+      Your current goal is: <get name="goal"/>.
+    </template>
+  </category>
+
+  <!-- Recalling the last sentence type -->
+  <category>
+    <pattern>WHAT TYPE OF SENTENCE DID I USE</pattern>
+    <template>
+      The last sentence you used was a <get name="last_sentence_type"/>.
+    </template>
+  </category>
+
+
+
+  <!-- General wellness tip -->
+  <category>
+    <pattern>GENERAL WELLNESS TIP</pattern>
+    <template>
+      Prioritize sleep and make time for activities you enjoy!
+      <think>
+        <set name="last_sentence_type">Statement</set>
+        <set name="sentiment">Positive</set>
+        <set name="perspective">Second Person</set>
+      </think>
+    </template>
+  </category>
+
+    <category>
+        <pattern>WHO IS * FOR *</pattern>
+        <template>
+            The <set name="rel"><star index="1"></star></set>
+            for <set name="X"><star index="2"></star></set>
+            is <get name="Y"/>.
+        </template>
+  </category>
+
+  <category>
+        <pattern>WHO PARTICIPATES IN *</pattern>
+        <template>
+            <set name="rel">participants_of</set>
+            <set name="X"><star/></set>
+            Let me find the participants of <star/>.
+        </template>
+  </category>
+
+
+   <category>
+        <pattern>WHAT IS *</pattern>
+        <template>
+            The definition for  <set name="rel"> <star/> </set>
+            is <get name ="definition"/>
+        </template>
+  </category>
+
+  <category>
+    <pattern>* IS * OF *</pattern>
+    <template>i learned that <set name="person1"><star index="1" /></set> is <set name="rela"><star index = "2" /></set> of <set name="person2"><star index = "3" /></set> </template>
+  </category>
+
+  <category>
+        <pattern>RESULT OF *</pattern>
+        <template>
+            The result is <get name="Y"/>.
+        </template>
+  </category>
+
+  <!-- Goodbye -->
+  <category>
+    <pattern>BYE</pattern>
+    <template>
+      Goodbye! Stay healthy!
+      <think>
+        <set name="last_sentence_type">Statement</set>
+        <set name="sentiment">Neutral</set>
+        <set name="perspective">Second Person</set>
+      </think>
+    </template>
+  </category>
+</aiml>

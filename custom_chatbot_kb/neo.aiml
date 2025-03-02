@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+    <!-- Pattern to match 'Alice is a friend of Bob' -->
+    <category>
+        <pattern>* IS A * OF *</pattern>
+        <template>
+            I learned that <set name="p1"><star index="1" /></set> is <set name="rel"><star index="2" /></set> of <set name="p2"><star index="3" /></set>.
+        </template>
+    </category>
+
+    <!-- Fallback for unmatched inputs -->
+
+
+    <!-- Goodbye handling -->
+    <category>
+        <pattern>bye</pattern>
+        <template>Goodbye!</template>
+    </category>
+</aiml>
