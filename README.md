@@ -8,20 +8,26 @@ Example: "who is coaches for yoga and who participates in yoga?"
 Relationship Management with Neo4j:
 Manages relationships between users, trainers, and gyms using Neo4j.
 Example: "John is a trainer of Alice" → Stores and retrieves relationships.
+
 Natural Language Processing (NLP):
 Leverages NLTK and spaCy for tokenization, POS tagging, and understanding user queries.
 Example: "Define deadlift" → Provides a detailed definition.
+
 WordNet Integration:
 Provides definitions for fitness-related terms using WordNet.
 Example: "What is a deadlift?" → "A weightlifting exercise where a loaded barbell is lifted off the ground."
+
 AIML for Structured Conversations:
 Uses AIML to handle structured conversations and predefined fitness-related queries.
 Example: "i want to improve my health"
+
 Sentiment Analysis:
 Uses VADER from NLTK to analyze user mood and provide empathetic responses.
 Example: "I feel tired today" → "Your mood seems Negative 😠. Here’s a light workout suggestion."
+
 User Authentication:
 Simple login system to authenticate users and protect access to the chatbot.
+
 Interactive Web Interface:
 Built with Flask for a user-friendly web interface.
 Users can interact with the chatbot via a web browser.
