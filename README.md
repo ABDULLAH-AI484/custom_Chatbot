@@ -4,6 +4,7 @@ Welcome to Custom Chatbot, a specialized Gym and Fitness Knowledge Bot designed 
 Fitness Knowledge Base:
 Uses Prolog to store and query fitness-related knowledge (e.g., exercises, muscle groups, workout plans).
 Example: "who is coaches for yoga and who participates in yoga?"
+
 Relationship Management with Neo4j:
 Manages relationships between users, trainers, and gyms using Neo4j.
 Example: "John is a trainer of Alice" → Stores and retrieves relationships.
